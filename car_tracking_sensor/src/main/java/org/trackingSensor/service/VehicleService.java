@@ -11,9 +11,6 @@ public interface VehicleService {
     Vehicle findById(String vin);
     Reading create(Reading vehicle);
     Wheels create(Wheels pressure);
-  //  List<alertInfo> findHighAlerts();
     List<Reading> findGeoLocation(String vin);
-  //  List<alertInfo> findVehicleAlerts(String vin);
-
-  //  void throwAlerts(Reading vehicle);
+  
 }
