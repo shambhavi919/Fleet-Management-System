@@ -23,8 +23,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Autowired
     VehicleWheelsRepository wheels;
 
-  //  @Autowired
-  //  alertRepository alerts;
+  
 
     @Transactional(readOnly = true)
     public List<Vehicle> findAll() {
@@ -49,15 +48,7 @@ public class VehicleServiceImpl implements VehicleService {
         return existing.get();
     }
 
-  //  @Transactional(readOnly = true)
-  //  public List<alertInfo> findHighAlerts(){
-  //      return alerts.findHighAlerts();
- //   }
-
- //   @Transactional(readOnly = true)
- //   public List<alertInfo> findVehicleAlerts(String vin){
-  //      return alerts.findVehicleAlerts(vin);
-  //  }
+  
 
     @Transactional
     public Vehicle update(Vehicle vehicleInfo) {
@@ -86,50 +77,5 @@ public class VehicleServiceImpl implements VehicleService {
         }
         return wheels.save(pressure);
     }
-
-/*
-    public void throwAlerts(vehicleUpdate vehicle){
-        Optional<vehicleInfo> vehicleInfo = vehicles.findById(vehicle.getVin());
-        Optional<vehicleTirePressure> tirePressure = tires.findById(new vehicleId(vehicle.getVin(),vehicle.getTimestamp()));
-
-        if(vehicleInfo.isPresent()){
-            if(vehicleInfo.get().getRedlineRpm() < vehicle.getEngineRpm())
-            {
-                alertInfo alertInfo = new alertInfo(vehicle.getVin(),vehicle.getTimestamp());
-                alertInfo.setPriority("HIGH");
-                alertInfo.setAlertType("RPM");
-                alertInfo.setMessage(" Vehicle moving at high RPM");
-                alerts.save(alertInfo);
-            }
-            if(vehicleInfo.get().getMaxFuelVolume()*0.1 > vehicle.getFuelVolume()){
-                alertInfo alertInfo = new alertInfo(vehicle.getVin(),vehicle.getTimestamp());
-                alertInfo.setAlertType("FUEL");
-                alertInfo.setPriority("MEDIUM");
-                alertInfo.setMessage(" LOW VOLUME ALERT");
-                alerts.save(alertInfo);
-            }
-
-            if(tirePressure.get().getRearLeft() < 32 || tirePressure.get().getRearLeft() > 36 || tirePressure.get().getRearRight() < 32 || tirePressure.get().getRearRight() > 36  ||
-                    tirePressure.get().getFrontLeft() < 32 || tirePressure.get().getFrontLeft() > 36 || tirePressure.get().getFrontRight() < 32 || tirePressure.get().getFrontRight() > 36 )
-            {
-                alertInfo alertInfo = new alertInfo(vehicle.getVin(),vehicle.getTimestamp());
-                alertInfo.setPriority("LOW");
-                alertInfo.setAlertType("TIRE");
-                alertInfo.setMessage(" PLEASE CHECK TIRE PRESSURE");
-                alerts.save(alertInfo);
-            }
-
-            if(vehicle.isEngineCoolantLow() || vehicle.isCheckEngineLightOn()) {
-                alertInfo alertInfo = new alertInfo(vehicle.getVin(),vehicle.getTimestamp());
-                alertInfo.setPriority("LOW");
-                alertInfo.setAlertType("ENGINE");
-                alertInfo.setMessage(" PLEASE CHECK ENGINE-COOLANT and ENGINE CONDITION");
-                alerts.save(alertInfo);
-            }
-        }
-
-    }
-
-*/
-
+            
 }
